@@ -9,6 +9,7 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="navbar-menu"
+        @click="mobileMenuIsShown = !mobileMenuIsShown"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -16,7 +17,11 @@
       </a>
     </div>
 
-    <div class="navbar-menu" id="navbar-menu">
+    <div
+      class="navbar-menu"
+      id="navbar-menu"
+      v-bind:class="{ 'is-active': mobileMenuIsShown }"
+    >
       <div class="navbar-end">
         <router-link to="/summer" class="navbar-item">Summer</router-link>
         <router-link to="/winter" class="navbar-item">Winter</router-link>
@@ -40,6 +45,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Navbar",
+  data() {
+    return {
+      mobileMenuIsShown: false,
+    };
+  },
   components: {},
 });
 </script>
